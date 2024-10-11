@@ -37,88 +37,66 @@ function toggleNotepadVisibility() {
   }
 }
 
-function createContainer() {
-  const div = document.createElement('div');
-  div.style.position = 'fixed';
-  div.style.bottom = '20px';
-  div.style.right = '20px';
-  div.style.width = '400px';
-  div.style.backgroundColor = '#fff';
-  div.style.border = '1px solid #ccc';
-  div.style.borderRadius = '8px';
-  div.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
-  div.style.zIndex = '9999';
-  div.style.overflow = 'hidden';
-
-  return div;
+function containerStyle(container) {
+  container.style.position = 'fixed';
+  container.style.bottom = '20px';
+  container.style.right = '20px';
+  container.style.width = '400px';
+  container.style.backgroundColor = '#fff';
+  container.style.border = '1px solid #ccc';
+  container.style.borderRadius = '8px';
+  container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+  container.style.zIndex = '9999';
+  container.style.overflow = 'hidden';
 }
 
-function createHeader() {
-  const div = document.createElement('div');
-  div.style.backgroundColor = '#f1f1f1';
-  div.style.padding = '10px';
-  div.style.cursor = 'move';
-  div.style.display = 'flex';
-  div.style.justifyContent = 'space-between';
-  div.style.alignItems = 'center';
-
-  return div;
+function headerStyle(header) {
+  header.style.backgroundColor = '#f1f1f1';
+  header.style.padding = '10px';
+  header.style.cursor = 'move';
+  header.style.display = 'flex';
+  header.style.justifyContent = 'space-between';
+  header.style.alignItems = 'center';
 }
 
-function createTitle() {
-  const span = document.createElement('span');
-  span.textContent = 'Note';
-
-  return span;
+function titleStyle(title) {
+  title.textContent = 'Note';
 }
 
-function createButtonContainer() {
-  const div = document.createElement('div');
-  div.style.display = 'flex';
-  div.style.gap = '10px';
-
-  return div;
+function buttonContainerStyle(buttonContainer) {
+  buttonContainer.style.display = 'flex';
+  buttonContainer.style.gap = '10px';
 }
 
-function createSaveButton() {
-  const button = document.createElement('button');
-  button.textContent = 'Save';
-  button.style.background = '#4CAF50';
-  button.style.color = 'white';
-  button.style.border = 'none';
-  button.style.padding = '5px 10px';
-  button.style.cursor = 'pointer';
-  button.style.borderRadius = '4px';
-
-  return button;
+function saveButtonStyle(saveBtn) {
+  saveBtn.textContent = 'Save';
+  saveBtn.style.background = '#4CAF50';
+  saveBtn.style.color = 'white';
+  saveBtn.style.border = 'none';
+  saveBtn.style.padding = '5px 10px';
+  saveBtn.style.cursor = 'pointer';
+  saveBtn.style.borderRadius = '4px';
 }
 
-function createClearButton() {
-  const button = document.createElement('button');
-  button.textContent = 'Clear';
-  button.style.background = '#f44336';
-  button.style.color = 'white';
-  button.style.border = 'none';
-  button.style.padding = '5px 10px';
-  button.style.cursor = 'pointer';
-  button.style.borderRadius = '4px';
-
-  return button;
+function clearButtonStyle(clearBtn) {
+  clearBtn.textContent = 'Clear';
+  clearBtn.style.background = '#f44336';
+  clearBtn.style.color = 'white';
+  clearBtn.style.border = 'none';
+  clearBtn.style.padding = '5px 10px';
+  clearBtn.style.cursor = 'pointer';
+  clearBtn.style.borderRadius = '4px';
 }
 
-function createMinimizeButton() {
-  const button = document.createElement('button');
-  button.textContent = '-';
-  button.style.background = 'none';
-  button.style.border = 'none';
-  button.style.cursor = 'pointer';
-  button.style.fontSize = '18px';
-
-  return button;
+function minimizeButtonStyle(minimizeBtn) {
+  minimizeBtn.textContent = '-';
+  minimizeBtn.style.background = 'none';
+  minimizeBtn.style.border = 'none';
+  minimizeBtn.style.cursor = 'pointer';
+  minimizeBtn.style.fontSize = '18px';
 }
 
-function createTextArea() {
-  const textarea = document.createElement('textarea');
+function textareaStyle(textarea) {
   textarea.placeholder = 'Add a comment...';
   textarea.style.width = '100%';
   textarea.style.height = '150px';
@@ -128,49 +106,53 @@ function createTextArea() {
   textarea.style.fontSize = '14px';
   textarea.style.boxSizing = 'border-box';
   textarea.style.outline = 'none';
-
-  return textarea;
 }
 
-function createResizableHandle() {
-  const div = document.createElement('div');
-  div.style.width = '10px';
-  div.style.height = '10px';
-  div.style.backgroundColor = '#ccc';
-  div.style.position = 'absolute';
-  div.style.right = '0';
-  div.style.bottom = '0';
-  div.style.cursor = 'se-resize';
-
-  return div;
+function resizeHandleStyle(resizeHandle) {
+  resizeHandle.style.width = '10px';
+  resizeHandle.style.height = '10px';
+  resizeHandle.style.backgroundColor = '#ccc';
+  resizeHandle.style.position = 'absolute';
+  resizeHandle.style.right = '0';
+  resizeHandle.style.bottom = '0';
+  resizeHandle.style.cursor = 'se-resize';
 }
 
 function createNotePad() {
   // Create the main container
-  const container = createContainer();
+  const container = document.createElement('div');
+  containerStyle(container);
 
   // Create the header
-  const header = createHeader();
+  const header = document.createElement('div');
+  headerStyle(header);
 
-  // Title bar
-  header.appendChild(createTitle());
+  const title = document.createElement('span');
+  titleStyle(title);
+  header.appendChild(title);
 
-  // Button container
-  const buttonContainer = createButtonContainer();
+  const buttonContainer = document.createElement('div');
+  buttonContainerStyle(buttonContainer);
 
   // Create Save button
-  buttonContainer.appendChild(createSaveButton());
+  const saveBtn = document.createElement('button');
+  saveButtonStyle(saveBtn);
+  buttonContainer.appendChild(saveBtn);
 
   // Create Clear button
-  buttonContainer.appendChild(createClearButton());
+  const clearBtn = document.createElement('button');
+  clearButtonStyle(clearBtn);
+  buttonContainer.appendChild(clearBtn);
 
-  // Create Minimize button
-  buttonContainer.appendChild(createMinimizeButton());
+  const minimizeBtn = document.createElement('button');
+  minimizeButtonStyle(minimizeBtn);
+  buttonContainer.appendChild(minimizeBtn);
 
   header.appendChild(buttonContainer);
 
   // Create the textarea
-  const textarea = createTextArea();
+  const textarea = document.createElement('textarea');
+  textareaStyle(textarea);
 
   // Store textarea reference globally
   textareaElement = textarea;
@@ -215,8 +197,11 @@ function createNotePad() {
   // Resize functionality
   let isResizing = false;
   let startWidth, startHeight;
+  const MIN_WIDTH = 400;
+  const MIN_HEIGHT = 200;
 
-  const resizeHandle = createResizableHandle();
+  const resizeHandle = document.createElement('div');
+  resizeHandleStyle(resizeHandle);
   container.appendChild(resizeHandle);
 
   resizeHandle.addEventListener('mousedown', startResizing);
@@ -239,8 +224,8 @@ function createNotePad() {
 
   function resize(e) {
     if (isResizing) {
-      const width = startWidth + e.clientX - startX;
-      const height = startHeight + e.clientY - startY;
+      const width = Math.max(MIN_WIDTH, startWidth + e.clientX - startX);
+      const height = Math.max(MIN_HEIGHT, startHeight + e.clientY - startY);
       container.style.width = width + 'px';
       container.style.height = height + 'px';
       textarea.style.height = height - header.offsetHeight + 'px';
@@ -260,7 +245,8 @@ function createNotePad() {
     if (isMinimized) {
       textarea.style.display = 'block';
       resizeHandle.style.display = 'block';
-      container.style.height = 'auto';
+      container.style.height =
+        Math.max(MIN_HEIGHT, startHeight || MIN_HEIGHT) + 'px';
       minimizeBtn.textContent = '-';
     } else {
       textarea.style.display = 'none';
