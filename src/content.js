@@ -263,11 +263,18 @@ function createNotePad() {
   function saveComment() {
     const comment = textarea.value.trim();
     if (comment) {
-      console.log('Saving comment:', comment);
-      // Here you would typically send the comment to a server
-      // For now, we'll just log it and clear the textarea
-      textarea.value = '';
-      alert('Comment saved!');
+      const fileName =
+        prompt('Enter file name:', 'comment.txt') || 'comment.txt';
+      const blob = new Blob([comment], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName; // Use the user-defined filename
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url); // Free up memory
+      textarea.value = ''; // Clear the textarea
     } else {
       alert('Please enter a comment before saving.');
     }
