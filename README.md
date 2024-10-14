@@ -15,7 +15,7 @@ YT-NotePad is a simple and lightweight Chrome extension that allows you to take 
 
 ## 🚀 How to Use
 
-1. **Install the Extension**: Add the extension from the (Chrome Web Store)[https://chromewebstore.google.com/detail/yt-notepad/adkhjiheobeladjlodbggkphikfaionf?authuser=0&hl=en].
+1. **Install the Extension**: Add the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/yt-notepad/adkhjiheobeladjlodbggkphikfaionf?authuser=0&hl=en).
 2. **Open the Notepad**: Click the extension icon while watching a YouTube video to open the notepad.
 3. **Take Notes**: Write down your notes as needed.
 4. **Save Notes**: Click the save button to manually save your notes to your downloads folder.
